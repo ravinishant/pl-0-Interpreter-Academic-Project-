@@ -1,0 +1,41 @@
+<html><head>
+<style type="text/css">
+textarea {
+   font-size: 8pt;
+   font-family: Courier;
+} 
+canvas {
+   border: 2px solid black;
+}
+</style>
+<title>PL/0 Machine</title>
+</head>
+<body onload="start_canvas();">
+<button id=compileButton onclick="compile()" disabled>Compile</button>
+<button id=runButton onclick="run()" disabled>Run</button>
+<button id=continueButton onclick="contin()" disabled>Continue</button>
+<button id=stopButton onclick="stop()" disabled>Stop</button>
+<br>PL/0 Code:
+<textarea id=sourcebox rows="20" cols="30" onkeydown="edit()">
+</textarea>
+Listing:
+<textarea id=listingbox rows="20" cols="70" readonly></textarea>
+coverage:
+<textarea id=coveragebox rows="20" cols="70" readonly></textarea>
+Integer Input:
+<textarea id=instreambox rows="5" cols="10"></textarea>
+Emoji Input:
+<textarea id=emojibox rows="2" cols="20"></textarea>
+Step Limit
+<textarea id=steplimitbox rows="1" cols="10"></textarea>
+Breakpoints
+<textarea id=breakpointbox rows="1" cols="10"></textarea>
+Output:
+<textarea id=outstreambox rows="10" cols="15" readonly></textarea>
+Run-Time Stack:
+<textarea id=rtsbox rows="10" cols="25" readonly></textarea>
+Mouse Position (cvx, cvy);
+<textarea id=cvxcvybox rows="1" cols="14" readonly></textarea>
+<canvas id="graphic" tabindex="1" width="500" height="300"></canvas>
+<script src="pl0.baseline.js"></script>
+</body></html>

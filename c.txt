@@ -1,0 +1,65 @@
+\ Indicates mouse position relative to center of canvas
+
+const
+  unknown=0,north=1,east=2,south=3,west=4;
+
+var current;
+
+procedure direction;
+var x,y;
+begin
+  current:=unknown;
+  if cvx>-1 then
+    begin
+      x:=cvx-250;
+      y:=150-cvy;
+      if -x<y then
+        begin
+          if x<y then
+            current:=north
+          else if x>y then
+            current:=east
+        end
+      else if -x>y then
+        \begin
+          if x>y then
+            current:=south
+          else if x<y then
+            current:=west
+        \end
+    end
+end;
+
+begin
+  call cvasclick;
+  while cvclickx<0 do
+    begin
+      call wait(10);
+      call cvclear;
+      call cvline(100,0,400,300);
+      call cvline(100,300,400,0);
+      call direction;
+      if current=unknown then
+        call cvball(250,150,20)
+      else if current=north then
+        call cvball(250,75,20)
+      else if current=east then
+        call cvball(375,150,20)
+      else if current=south then
+        call cvball(250,225,20)
+      else if current=west then
+        call cvball(125,150,20);
+      if cvx>-1 then
+        begin
+          call cvline(cvx,0,cvx,300);
+          call cvline(0,cvy,500,cvy);
+        end
+    end;
+  \ Have to touch the canvas center
+  while (cvx-250)*(250-cvx)+(cvy-150)*(150-cvy)#0 do
+    begin
+      call cvclear;
+      call cvline(cvx,cvy,250,150);
+      call wait(10);
+    end
+end.

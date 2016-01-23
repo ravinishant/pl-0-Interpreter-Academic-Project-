@@ -1,0 +1,35 @@
+var m;
+
+  procedure a(i);
+
+    procedure b(j);
+
+      procedure c(k);
+
+      begin
+        if k<105 then
+          call c(k+2)
+        else
+          call stop
+      end;
+
+    begin
+      if j<15 then
+        call b(j+1)
+      else
+        begin
+          m:=i+j;
+          call c(100)
+        end
+    end;
+
+  begin
+    if i<5 then
+      call a(i+1)
+    else
+      call b(10)
+  end;
+
+begin
+  call a(1)
+end.

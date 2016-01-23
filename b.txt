@@ -1,0 +1,37 @@
+procedure iloop(i);
+
+  procedure jloop(j);
+
+    procedure kloop(k);
+
+      begin
+        call stop;
+        k:=k+1;
+        out:=i+j+k;
+        if k<2 then
+          call kloop(k)
+        else if k=2 then
+          call jloop(j)
+      end; 
+
+    begin
+      call stop;
+      j:=j+10;
+      if j=30 then
+        call iloop(i)
+      else if j>30 then
+      else
+        call kloop(0);
+    end; 
+
+  begin
+    call stop;
+    i:=i+100;
+    if i<300 then
+      call jloop(0)
+  end; 
+
+begin
+  call stop;
+  call iloop(0)
+end.
